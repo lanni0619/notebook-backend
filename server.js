@@ -10,7 +10,7 @@ const noteRoute = require("./routes/note-route");
 // passport
 const passport = require("passport");
 require("./config/passport").jwt(passport);
-// const session = require("express-session");
+const session = require("express-session");
 // cors
 const cors = require("cors");
 
@@ -25,14 +25,14 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cors());
 
-// session
-// app.use(
-//   session({
-//     secret: process.env.SESSION_SECRET || "keyboard cat",
-//     resave: false,
-//     saveUninitialized: true,
-//   })
-// );
+session;
+app.use(
+  session({
+    secret: process.env.SESSION_SECRET || "keyboard cat",
+    resave: false,
+    saveUninitialized: true,
+  })
+);
 
 app.use(passport.initialize());
 // app.use(passport.session());
