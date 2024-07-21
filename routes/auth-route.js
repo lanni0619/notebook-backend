@@ -85,7 +85,7 @@ router.get(
 // google redirect
 router.get(
   "/google/redirect",
-  passport.authenticate("google", { failureRedirect: "/", session: false }),
+  passport.authenticate("google", { failureRedirect: "/", session: true }),
   (req, res) => {
     const payload = {
       _id: req.user._id,
@@ -94,7 +94,7 @@ router.get(
     const token = jwt.sign(payload, process.env.JWT_privateKey, {
       //  expiresIn: "1h",
     });
-    res.cookie("jwt", token, { sameSite: false, secure: true });
+    res.cookie("jwt", token);
     res.redirect(process.env.CLIENT_URL);
   }
 );

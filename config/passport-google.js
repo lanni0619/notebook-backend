@@ -38,12 +38,12 @@ passport.use(
   )
 );
 
-// passport.serializeUser((user, done) => {
-//   console.log("=== serialize ===");
-//   done(null, user);
-// });
+passport.serializeUser((user, done) => {
+  console.log("=== serialize ===");
+  done(null, user);
+});
 
-// passport.deserializeUser((user, done) => {
-//   console.log("=== deserialize ===");
-//   done(null, user);
-// });
+passport.deserializeUser((user, done) => {
+  console.log("=== deserialize ===");
+  done(null, user);
+});
