@@ -94,7 +94,7 @@ router.get(
     const token = jwt.sign(payload, process.env.JWT_privateKey, {
       //  expiresIn: "1h",
     });
-    res.cookie("jwt", token);
+    res.cookie("jwt", token, { httpOnly: false });
     res.redirect(process.env.CLIENT_URL);
   }
 );
