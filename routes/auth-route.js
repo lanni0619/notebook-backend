@@ -94,7 +94,11 @@ router.get(
     const token = jwt.sign(payload, process.env.JWT_privateKey, {
       //  expiresIn: "1h",
     });
-    res.cookie("jwt", token);
+    res.cookie("jwt", token, {
+      domain: process.env.SERVER_URL,
+      secure: true,
+      sameSite: "none",
+    });
     res.redirect(process.env.CLIENT_URL);
   }
 );
