@@ -2,7 +2,7 @@ const passport = require("passport");
 const passportGoogle = require("passport-google-oauth20");
 const GoogleStrategy = passportGoogle.Strategy;
 const User = require("../models/user-model");
-const port = process.env.port || 8080;
+const port = process.env.PORT || 8080;
 
 passport.use(
   new GoogleStrategy(
