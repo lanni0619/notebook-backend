@@ -95,7 +95,7 @@ router.get(
       //  expiresIn: "1h",
     });
     res.cookie("jwt", token, {
-      domain: process.env.SERVER_URL,
+      domain: process.env.CLIENT_URL,
       secure: true,
       sameSite: "none",
     });
