@@ -2,6 +2,7 @@
 require("dotenv").config();
 const express = require("express");
 const app = express();
+const port = process.env.PORT || 8080;
 // Setup mongoDB
 const mongoose = require("mongoose");
 // Routes
@@ -41,6 +42,6 @@ app.use("/auth", authRoute);
 // The note route should be protected by JWT
 app.use("/note", passport.authenticate("jwt", { session: false }), noteRoute);
 
-app.listen(process.env.SERVER_PORT || 8080, () => {
-  console.log("Backend server is running on " + process.env.SERVER_PORT);
+app.listen(port, () => {
+  console.log("Backend server is running on " + port);
 });
