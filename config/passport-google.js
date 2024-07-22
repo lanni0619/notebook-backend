@@ -2,13 +2,14 @@ const passport = require("passport");
 const passportGoogle = require("passport-google-oauth20");
 const GoogleStrategy = passportGoogle.Strategy;
 const User = require("../models/user-model");
+const port = process.env.port || 8080;
 
 passport.use(
   new GoogleStrategy(
     {
       clientID: process.env.GOOGLE_CLIENT_ID || "",
       clientSecret: process.env.GOOGLE_CLIENT_SECRET || "",
-      callbackURL: process.env.SERVER_URL + "/auth/google/redirect",
+      callbackURL: `http://localhost:${port}/auth/google/redirect`,
     },
     async (accessToken, refreshToken, profile, done) => {
       console.log("===Googel Strategy zone===");
